@@ -1,12 +1,14 @@
 #include "BoxCollider.hh"
 
-BoxCollider::BoxCollider(float posX, float posY, sf::Color* borderColor, float width, float height)
+BoxCollider::BoxCollider(float posX, float posY, sf::Color* borderColor, float width, float height, Rigidbody* rigidbody, sf::Sprite* parentSprite)
 {
     this->posX = posX;
     this->posY = posY;
     this->borderColor = borderColor;
     this->width = width;
     this->height = height;
+    this->rigidbody = rigidbody;
+    this->parentSprite = parentSprite;
 
     InitShape();
 }
@@ -20,10 +22,25 @@ void BoxCollider::InitShape()
     boxShape->setFillColor(sf::Color::Transparent);
     boxShape->setOutlineColor(*borderColor);
     boxShape->setOutlineThickness(0.5f);
-
 }
 
 sf::RectangleShape* BoxCollider::GetBoxShape() const
 {
     return boxShape;
+}
+
+b2Vec2 BoxCollider::GetBodyPosition() const
+{
+    return rigidbody->GetBody()->GetPosition();
+}
+
+void BoxCollider::UpdatePhysics()
+{
+    boxShape->setPosition(GetBodyPosition().x, GetBodyPosition().y);
+    parentSprite->setPosition(GetBodyPosition().x, GetBodyPosition().y);
+}
+
+void BoxCollider::Move(b2Vec2* direction)
+{
+    rigidbody->GetBody()->SetLinearVelocity(*direction);
 }

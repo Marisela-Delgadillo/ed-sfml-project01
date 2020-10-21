@@ -5,11 +5,11 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/include/**",
-                "${workspaceFolder}/include/Audio",
-                "${workspaceFolder}/include/Graphics",
-                "${workspaceFolder}/include/Network",
-                "${workspaceFolder}/include/System",
-                "${workspaceFolder}/include/Window"
+                "${workspaceFolder}/include/SFML/Audio",
+                "${workspaceFolder}/include/SFML/Graphics",
+                "${workspaceFolder}/include/SFML/Network",
+                "${workspaceFolder}/include/SFML/System",
+                "${workspaceFolder}/include/SFML/Window"
             ],
             "defines": [
                 "_DEBUG",

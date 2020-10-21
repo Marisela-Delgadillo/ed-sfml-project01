@@ -17,6 +17,7 @@ Animation::~Animation(){}
 
 void Animation::Play(float& deltaTime)
 {
+    
     timer += deltaTime;
     if(timer >= delay)
     {
