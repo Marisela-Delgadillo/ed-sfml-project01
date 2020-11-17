@@ -1,8 +1,6 @@
-//class es para cosas privadas
 
-//struct es para cosas que va a ser publicas
-
-#include<iostream>
+#pragma once
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Vec2.hh"
 
@@ -15,7 +13,7 @@ struct Inputs
     Vec2* joystickAxis;
 
     //Constructor
-    Inputs(); 
+    Inputs();
 
     Vec2* GetKeyboardAxis();
     Vec2* GetJoystickAxis();

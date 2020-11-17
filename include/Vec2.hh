@@ -1,6 +1,8 @@
+#pragma once
+
 struct Vec2
 {
-    float x{};
+    float x{}; //las llaves son para inicializar en 0
     float y{};
 
     Vec2(){}
@@ -10,5 +12,4 @@ struct Vec2
         this->x = x;
         this->y = y;
     }
-
 };

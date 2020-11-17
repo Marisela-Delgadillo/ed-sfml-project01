@@ -1,8 +1,10 @@
 #include "Rigidbody.hh"
 
+#include<iostream>
 Rigidbody::Rigidbody(b2World*& world, b2BodyType bodyType, b2Vec2* position, 
 float boxWidth, float boxHeight, float density, float friction, float restitution)
 {
+    this->world = world;
     bodyDef = new b2BodyDef();
     bodyDef->type = bodyType;
     bodyDef->position = *position;
@@ -20,9 +22,23 @@ float boxWidth, float boxHeight, float density, float friction, float restitutio
     fixture = body->CreateFixture(fixtureDef);
 }
 
-Rigidbody::~Rigidbody(){}
+Rigidbody::~Rigidbody()
+{
+    fixture->SetSensor(true);
+    body->SetUserData(nullptr);
+}
 
 b2Body* Rigidbody::GetBody() const
 {
     return body;
+}
+
+void Rigidbody::SetUserData(void* userData)
+{
+    body->SetUserData(userData);
+}
+
+void Rigidbody::SetSensor(bool status)
+{
+    fixture->SetSensor(status);
 }
